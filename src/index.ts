@@ -6,9 +6,24 @@ let btnValidarMultiplo = <HTMLButtonElement>(
 );
 let dividendo: number;
 let divisor: number;
+let cantDivisores: number;
+
+//Declaracion de funciones
 
 function esMultiplo(numDividendo: number, numDivisor: number): boolean {
   return numDividendo % numDivisor === 0;
+}
+
+function contarDivisores(numeroADividir: number): number {
+  let cantidadDivisores: number = 0;
+  let divisor: number;
+  for (divisor = 0; divisor <= numeroADividir; divisor++) {
+    if (esMultiplo(numeroADividir, divisor)) {
+      cantidadDivisores++;
+      console.log(cantidadDivisores);
+    }
+  }
+  return cantidadDivisores;
 }
 
 btnValidarMultiplo.addEventListener("click", () => {
@@ -19,4 +34,8 @@ btnValidarMultiplo.addEventListener("click", () => {
   } else {
     console.log(`${dividendo} no es nultiplo de ${divisor}`);
   }
+  cantDivisores = contarDivisores(dividendo);
+  console.log(
+    `la cantidad de divisores de ${dividendo} es ${Number(cantDivisores)}`
+  );
 });
